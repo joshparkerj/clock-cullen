@@ -58,6 +58,7 @@ const startClock = function startClock() {
 
   const setClockTimeout = function setClockTimeout(elementId, timeoutGetter) {
     const element = document.getElementById(elementId);
+    element.innerHTML = '';
     const currentDateTime = new Date();
     if (elementId === 'Hours') {
       const hours = currentDateTime.getHours();
@@ -68,7 +69,6 @@ const startClock = function startClock() {
       element.appendChild(new Text(currentDateTime[`get${elementId}`]().toString().padStart(2, '0')));
     }
     timeouts[elementId] = setTimeout(() => {
-      element.innerHTML = '';
       setClockTimeout(elementId, timeoutGetter);
     }, timeoutGetter(currentDateTime));
   };
@@ -90,7 +90,14 @@ const startClock = function startClock() {
     1000
     - currentDateTime.getMilliseconds()
   ));
+
+  setDate();
 };
 
 startClock();
-setDate();
+
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible') {
+    startClock();
+  }
+});
