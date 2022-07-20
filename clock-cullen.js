@@ -40,7 +40,7 @@ const startClock = function startClock() {
       const systemTime = new Date();
       const differences = {
         year: worldClockTime.getFullYear() - systemTime.getFullYear(),
-        month: worldClockTime.getFullYear() - systemTime.getFullYear(),
+        month: worldClockTime.getMonth() - systemTime.getMonth(),
         day: worldClockTime.getDate() - systemTime.getDate(),
         hour: worldClockTime.getHours() - systemTime.getHours(),
         minute: worldClockTime.getMinutes() - systemTime.getMinutes(),
