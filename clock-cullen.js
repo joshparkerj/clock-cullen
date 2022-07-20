@@ -1,5 +1,3 @@
-// yo this version of the file is actually newer dawg
-
 const warn = function warn(message) {
   const warning = document.createElement('div');
   warning.classList.add('warning');
@@ -32,10 +30,8 @@ const setDate = function setDate() {
 };
 
 const startClock = function startClock() {
-  console.log('now starting clock');
   fetch('http://worldclockapi.com/api/json/utc/now')
     .then((r) => r.json()).then(({ currentDateTime }) => {
-      console.log(currentDateTime);
       const worldClockTime = new Date(currentDateTime);
       const systemTime = new Date();
       const differences = {
@@ -45,9 +41,6 @@ const startClock = function startClock() {
         hour: worldClockTime.getHours() - systemTime.getHours(),
         minute: worldClockTime.getMinutes() - systemTime.getMinutes(),
       };
-
-      console.log(differences);
-      console.log(JSON.stringify(differences));
 
       const warnDifference = function warnDifference([name, difference]) {
         if (Math.abs(difference) > 0) {
