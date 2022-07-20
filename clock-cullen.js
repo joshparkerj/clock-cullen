@@ -57,16 +57,22 @@ const startClock = function startClock() {
   Object.values(timeouts).forEach((timeoutId) => { clearTimeout(timeoutId); });
 
   const setClockTimeout = function setClockTimeout(elementId, timeoutGetter) {
-    const element = document.getElementById(elementId);
-    element.innerHTML = '';
     const currentDateTime = new Date();
     if (elementId === 'Hours') {
+      const element = document.getElementById(elementId);
+      element.innerHTML = '';
       const hours = currentDateTime.getHours();
       element.appendChild(new Text(hours % 12));
       document.getElementById('ampm').textContent = `${hours > 12 ? 'P' : 'A'}M`;
       if (hours === 0) setDate(currentDateTime);
     } else {
-      element.appendChild(new Text(currentDateTime[`get${elementId}`]().toString().padStart(2, '0')));
+      const element1 = document.getElementById(`${elementId}1`);
+      const element2 = document.getElementById(`${elementId}2`);
+      element1.innerHTML = '';
+      element2.innerHTML = '';
+      const time = currentDateTime[`get${elementId}`]();
+      element1.appendChild(new Text(Math.floor(time / 10)));
+      element2.appendChild(new Text(time % 10));
     }
     timeouts[elementId] = setTimeout(() => {
       setClockTimeout(elementId, timeoutGetter);

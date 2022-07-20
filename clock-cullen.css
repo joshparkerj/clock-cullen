@@ -1,3 +1,7 @@
+html {
+  font-size: 2vw;
+}
+
 main {
   position: fixed;
   inset: 0;
@@ -12,8 +16,17 @@ div {
   font-family: 'Orbitron', sans-serif;
   font-size: 4rem;
   display: inline-block;
-  margin: 1rem;
   color: red;
+  min-width: 4rem;
+}
+
+div.separator {
+  min-width: 1rem;
+  margin: 0 1rem;
+}
+
+div#ampm {
+  margin-left: 3rem;
 }
 
 .warning {
