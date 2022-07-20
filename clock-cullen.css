@@ -1,0 +1,32 @@
+main {
+  position: fixed;
+  inset: 0;
+  background-color: black;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: center;
+  justify-content: center;
+}
+
+div {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 4rem;
+  display: inline-block;
+  margin: 1rem;
+  color: red;
+}
+
+.warning {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2rem;
+  display: block;
+  color: white;
+}
+
+.row-divider {
+  width: 100%;
+}
+
+#date {
+  font-size: 3rem;
+}
